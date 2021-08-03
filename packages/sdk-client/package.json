@@ -1,6 +1,6 @@
 {
   "name": "@commercetools/sdk-client",
-  "version": "3.0.0",
+  "version": "0.1.0-beta",
   "description": "commercetools TypeScript SDK client for Platform API",
   "keywords": [
     "commercetools",
@@ -12,7 +12,7 @@
     "oauth",
     "auth"
   ],
-  "author": "Chukwuemeka Ajima <meeky.ae@gmail.com>",
+  "author": "Chukwuemeka Ajima",
   "homepage": "https://github.com/commercetools/commercetools-sdk-typescript",
   "license": "MIT",
   "main": "dist/index.js",
