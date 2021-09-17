@@ -1,5 +1,11 @@
 # @commercetools/importapi-sdk
 
+## 1.19.1
+
+### Patch Changes
+
+- [#114](https://github.com/commercetools/commercetools-sdk-typescript/pull/114) [`c93148c`](https://github.com/commercetools/commercetools-sdk-typescript/commit/c93148cbe222ba89d0aca5ceb113de208015c0e0) Thanks [@github-actions](https://github.com/apps/github-actions)! - Update generated SDKs
+
 ## 1.19.0
 
 ### Minor Changes
