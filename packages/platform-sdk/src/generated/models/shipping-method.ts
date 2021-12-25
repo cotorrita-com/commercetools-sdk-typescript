@@ -79,6 +79,10 @@ export interface ShippingMethod extends BaseResource {
   /**
    *
    */
+  readonly localizedName?: LocalizedString
+  /**
+   *
+   */
   readonly description?: string
   /**
    *
@@ -116,6 +120,10 @@ export interface ShippingMethodDraft {
    *
    */
   readonly name: string
+  /**
+   *
+   */
+  readonly localizedName?: LocalizedString
   /**
    *
    */
@@ -172,6 +180,7 @@ export interface ShippingMethodPagedQueryResponse {
 export interface ShippingMethodReference {
   readonly typeId: 'shipping-method'
   /**
+   *	Unique ID of the referenced resource.
    *
    */
   readonly id: string
@@ -183,10 +192,12 @@ export interface ShippingMethodReference {
 export interface ShippingMethodResourceIdentifier {
   readonly typeId: 'shipping-method'
   /**
+   *	Unique ID of the referenced resource. Either `id` or `key` is required.
    *
    */
   readonly id?: string
   /**
+   *	Unique key of the referenced resource. Either `id` or `key` is required.
    *
    */
   readonly key?: string
@@ -214,6 +225,7 @@ export type ShippingMethodUpdateAction =
   | ShippingMethodSetDescriptionAction
   | ShippingMethodSetKeyAction
   | ShippingMethodSetLocalizedDescriptionAction
+  | ShippingMethodSetLocalizedNameAction
   | ShippingMethodSetPredicateAction
 export interface ShippingRate {
   /**
@@ -436,6 +448,13 @@ export interface ShippingMethodSetLocalizedDescriptionAction {
    *
    */
   readonly localizedDescription?: LocalizedString
+}
+export interface ShippingMethodSetLocalizedNameAction {
+  readonly action: 'setLocalizedName'
+  /**
+   *
+   */
+  readonly localizedName?: LocalizedString
 }
 export interface ShippingMethodSetPredicateAction {
   readonly action: 'setPredicate'

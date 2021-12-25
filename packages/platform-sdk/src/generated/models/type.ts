@@ -279,6 +279,7 @@ export interface TypePagedQueryResponse {
 export interface TypeReference {
   readonly typeId: 'type'
   /**
+   *	Unique ID of the referenced resource.
    *
    */
   readonly id: string
@@ -290,10 +291,12 @@ export interface TypeReference {
 export interface TypeResourceIdentifier {
   readonly typeId: 'type'
   /**
+   *	Unique ID of the referenced resource. Either `id` or `key` is required.
    *
    */
   readonly id?: string
   /**
+   *	Unique key of the referenced resource. Either `id` or `key` is required.
    *
    */
   readonly key?: string
@@ -315,7 +318,6 @@ export type TypeUpdateAction =
   | TypeAddLocalizedEnumValueAction
   | TypeChangeEnumValueLabelAction
   | TypeChangeEnumValueOrderAction
-  | TypeChangeFieldDefinitionLabelAction
   | TypeChangeFieldDefinitionOrderAction
   | TypeChangeInputHintAction
   | TypeChangeKeyAction
@@ -375,17 +377,6 @@ export interface TypeChangeEnumValueOrderAction {
    *
    */
   readonly keys: string[]
-}
-export interface TypeChangeFieldDefinitionLabelAction {
-  readonly action: 'changeFieldDefinitionLabel'
-  /**
-   *
-   */
-  readonly fieldName: string
-  /**
-   *
-   */
-  readonly label: LocalizedString
 }
 export interface TypeChangeFieldDefinitionOrderAction {
   readonly action: 'changeFieldDefinitionOrder'

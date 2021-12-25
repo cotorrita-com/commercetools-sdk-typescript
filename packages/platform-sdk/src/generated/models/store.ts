@@ -137,6 +137,7 @@ export interface StorePagedQueryResponse {
 export interface StoreReference {
   readonly typeId: 'store'
   /**
+   *	Unique ID of the referenced resource.
    *
    */
   readonly id: string
@@ -148,10 +149,12 @@ export interface StoreReference {
 export interface StoreResourceIdentifier {
   readonly typeId: 'store'
   /**
+   *	Unique ID of the referenced resource. Either `id` or `key` is required.
    *
    */
   readonly id?: string
   /**
+   *	Unique key of the referenced resource. Either `id` or `key` is required.
    *
    */
   readonly key?: string
@@ -189,7 +192,7 @@ export interface StoreAddSupplyChannelAction {
   /**
    *
    */
-  readonly supplyChannel: ChannelResourceIdentifier
+  readonly supplyChannel?: ChannelResourceIdentifier
 }
 export interface StoreRemoveDistributionChannelAction {
   readonly action: 'removeDistributionChannel'
@@ -203,7 +206,7 @@ export interface StoreRemoveSupplyChannelAction {
   /**
    *
    */
-  readonly supplyChannel: ChannelResourceIdentifier
+  readonly supplyChannel?: ChannelResourceIdentifier
 }
 export interface StoreSetCustomFieldAction {
   readonly action: 'setCustomField'

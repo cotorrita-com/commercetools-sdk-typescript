@@ -375,6 +375,7 @@ export interface CartPagedQueryResponse {
 export interface CartReference {
   readonly typeId: 'cart'
   /**
+   *	Unique ID of the referenced resource.
    *
    */
   readonly id: string
@@ -386,10 +387,12 @@ export interface CartReference {
 export interface CartResourceIdentifier {
   readonly typeId: 'cart'
   /**
+   *	Unique ID of the referenced resource. Either `id` or `key` is required.
    *
    */
   readonly id?: string
   /**
+   *	Unique key of the referenced resource. Either `id` or `key` is required.
    *
    */
   readonly key?: string
@@ -1095,6 +1098,8 @@ export interface CartAddCustomLineItemAction {
    */
   readonly slug: string
   /**
+   *	[ResourceIdentifier](/../api/types#resourceidentifier) to a [TaxCategory](ctp:api:type:TaxCategory).
+   *
    *
    */
   readonly taxCategory?: TaxCategoryResourceIdentifier
@@ -1479,6 +1484,8 @@ export interface CartSetCustomShippingMethodAction {
    */
   readonly shippingRate: ShippingRateDraft
   /**
+   *	[ResourceIdentifier](/../api/types#resourceidentifier) to a [TaxCategory](ctp:api:type:TaxCategory).
+   *
    *
    */
   readonly taxCategory?: TaxCategoryResourceIdentifier
@@ -1508,6 +1515,8 @@ export interface CartSetCustomerEmailAction {
 export interface CartSetCustomerGroupAction {
   readonly action: 'setCustomerGroup'
   /**
+   *	[ResourceIdentifier](/../api/types#resourceidentifier) to a [CustomerGroup](ctp:api:type:CustomerGroup).
+   *
    *
    */
   readonly customerGroup?: CustomerGroupResourceIdentifier

@@ -39,6 +39,7 @@ import {
   ParcelDraft,
   ParcelMeasurements,
   PaymentState,
+  ReturnInfoDraft,
   ReturnItemDraft,
   ReturnPaymentState,
   ReturnShipmentState,
@@ -191,6 +192,7 @@ export interface OrderEditPagedQueryResponse {
 export interface OrderEditReference {
   readonly typeId: 'order-edit'
   /**
+   *	Unique ID of the referenced resource.
    *
    */
   readonly id: string
@@ -202,10 +204,12 @@ export interface OrderEditReference {
 export interface OrderEditResourceIdentifier {
   readonly typeId: 'order-edit'
   /**
+   *	Unique ID of the referenced resource. Either `id` or `key` is required.
    *
    */
   readonly id?: string
   /**
+   *	Unique key of the referenced resource. Either `id` or `key` is required.
    *
    */
   readonly key?: string
@@ -361,6 +365,8 @@ export interface StagedOrderAddCustomLineItemAction {
    */
   readonly slug: string
   /**
+   *	[ResourceIdentifier](/../api/types#resourceidentifier) to a [TaxCategory](ctp:api:type:TaxCategory).
+   *
    *
    */
   readonly taxCategory?: TaxCategoryResourceIdentifier
@@ -800,6 +806,8 @@ export interface StagedOrderSetCustomShippingMethodAction {
    */
   readonly shippingRate: ShippingRateDraft
   /**
+   *	[ResourceIdentifier](/../api/types#resourceidentifier) to a [TaxCategory](ctp:api:type:TaxCategory).
+   *
    *
    */
   readonly taxCategory?: TaxCategoryResourceIdentifier
@@ -829,6 +837,8 @@ export interface StagedOrderSetCustomerEmailAction {
 export interface StagedOrderSetCustomerGroupAction {
   readonly action: 'setCustomerGroup'
   /**
+   *	[ResourceIdentifier](/../api/types#resourceidentifier) to a [CustomerGroup](ctp:api:type:CustomerGroup).
+   *
    *
    */
   readonly customerGroup?: CustomerGroupResourceIdentifier
@@ -1076,6 +1086,13 @@ export interface StagedOrderSetParcelTrackingDataAction {
    */
   readonly trackingData?: TrackingData
 }
+export interface StagedOrderSetReturnInfoAction {
+  readonly action: 'setReturnInfo'
+  /**
+   *
+   */
+  readonly items?: ReturnInfoDraft[]
+}
 export interface StagedOrderSetReturnPaymentStateAction {
   readonly action: 'setReturnPaymentState'
   /**
@@ -1120,6 +1137,8 @@ export interface StagedOrderSetShippingAddressAndCustomShippingMethodAction {
    */
   readonly shippingRate: ShippingRateDraft
   /**
+   *	[ResourceIdentifier](/../api/types#resourceidentifier) to a [TaxCategory](ctp:api:type:TaxCategory).
+   *
    *
    */
   readonly taxCategory?: TaxCategoryResourceIdentifier

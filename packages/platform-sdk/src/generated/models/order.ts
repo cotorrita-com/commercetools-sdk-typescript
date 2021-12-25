@@ -105,6 +105,7 @@ import {
   StagedOrderSetParcelItemsAction,
   StagedOrderSetParcelMeasurementsAction,
   StagedOrderSetParcelTrackingDataAction,
+  StagedOrderSetReturnInfoAction,
   StagedOrderSetReturnPaymentStateAction,
   StagedOrderSetReturnShipmentStateAction,
   StagedOrderSetShippingAddressAction,
@@ -201,6 +202,7 @@ export type StagedOrderUpdateAction =
   | StagedOrderSetParcelItemsAction
   | StagedOrderSetParcelMeasurementsAction
   | StagedOrderSetParcelTrackingDataAction
+  | StagedOrderSetReturnInfoAction
   | StagedOrderSetReturnPaymentStateAction
   | StagedOrderSetReturnShipmentStateAction
   | StagedOrderSetShippingAddressAction
@@ -300,7 +302,7 @@ export interface LineItemImportDraft {
    */
   readonly state?: ItemState[]
   /**
-   *	Optional connection to a particular supplier.
+   *	Connection to a particular supplier.
    *	By providing supply channel information, you can uniquely identify
    *	inventory entries that should be reserved.
    *	The provided channel should have the
@@ -700,6 +702,7 @@ export interface OrderPagedQueryResponse {
 export interface OrderReference {
   readonly typeId: 'order'
   /**
+   *	Unique ID of the referenced resource.
    *
    */
   readonly id: string
@@ -711,10 +714,12 @@ export interface OrderReference {
 export interface OrderResourceIdentifier {
   readonly typeId: 'order'
   /**
+   *	Unique ID of the referenced resource. Either `id` or `key` is required.
    *
    */
   readonly id?: string
   /**
+   *	Unique key of the referenced resource. Either `id` or `key` is required.
    *
    */
   readonly key?: string
@@ -769,6 +774,7 @@ export type OrderUpdateAction =
   | OrderSetParcelItemsAction
   | OrderSetParcelMeasurementsAction
   | OrderSetParcelTrackingDataAction
+  | OrderSetReturnInfoAction
   | OrderSetReturnPaymentStateAction
   | OrderSetReturnShipmentStateAction
   | OrderSetShippingAddressAction
@@ -886,6 +892,21 @@ export interface ReturnInfo {
    *
    */
   readonly items: ReturnItem[]
+  /**
+   *	Identifies, which return tracking ID is connected to this particular return.
+   *
+   */
+  readonly returnTrackingId?: string
+  /**
+   *
+   */
+  readonly returnDate?: string
+}
+export interface ReturnInfoDraft {
+  /**
+   *
+   */
+  readonly items: ReturnItemDraft[]
   /**
    *	Identifies, which return tracking ID is connected to this particular return.
    *
@@ -1508,6 +1529,13 @@ export interface OrderSetParcelTrackingDataAction {
    *
    */
   readonly trackingData?: TrackingData
+}
+export interface OrderSetReturnInfoAction {
+  readonly action: 'setReturnInfo'
+  /**
+   *
+   */
+  readonly items?: ReturnInfoDraft[]
 }
 export interface OrderSetReturnPaymentStateAction {
   readonly action: 'setReturnPaymentState'

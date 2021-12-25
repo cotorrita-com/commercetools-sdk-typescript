@@ -118,6 +118,15 @@ export interface DiscountCode extends BaseResource {
    *
    */
   readonly validUntil?: string
+  /**
+   *	Used for the internal platform only and registers the reservation of use of a discount code.
+   *	Its value is managed by the platform.
+   *	It can change at any time due to internal and external factors.
+   *	It should not be used in customer logic.
+   *
+   *
+   */
+  readonly applicationVersion: number
 }
 export interface DiscountCodeDraft {
   /**
@@ -205,6 +214,7 @@ export interface DiscountCodePagedQueryResponse {
 export interface DiscountCodeReference {
   readonly typeId: 'discount-code'
   /**
+   *	Unique ID of the referenced resource.
    *
    */
   readonly id: string
@@ -216,10 +226,12 @@ export interface DiscountCodeReference {
 export interface DiscountCodeResourceIdentifier {
   readonly typeId: 'discount-code'
   /**
+   *	Unique ID of the referenced resource. Either `id` or `key` is required.
    *
    */
   readonly id?: string
   /**
+   *	Unique key of the referenced resource. Either `id` or `key` is required.
    *
    */
   readonly key?: string
